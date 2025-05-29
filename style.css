@@ -216,6 +216,7 @@
         gap: 20px;
         overflow-x: scroll;
         scroll-margin-inline: 20px;
+        overflow: -moz-scrollbars-none;
     }
 
     .trusted__lower.container::-webkit-scrollbar {
