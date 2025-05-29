@@ -3,8 +3,6 @@ const menuIcon = document.getElementById("menu-icon");
 const nav = document.getElementById("nav");
 const navButtons = document.querySelectorAll(".nav-link")
 
-console.log(navButtons)
-
 // ? EVENT LISTNERS
 menuIcon.addEventListener("click", () => {
     nav.style.right = "0";
