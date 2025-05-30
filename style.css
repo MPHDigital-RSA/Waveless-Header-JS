@@ -193,6 +193,10 @@
         color: var(--black);
     }
 
+    .hero p {
+        color: var(--gray);
+    }
+
     .hero h1 span {
         color: var(--orange);
     }
@@ -263,7 +267,7 @@
 
     @media (width < 680px) {
         .hero h1 {
-            font-size: 28px;
+            font-size: 30px;
             line-height: 1;
         }
 
