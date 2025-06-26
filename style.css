@@ -9,6 +9,7 @@
         --menu-bg: #FFF7E6;
         --gray: #8896AB;
         --dark-orange: #612500;
+        --black-orange: #442A11;
     }
 
     *,
@@ -36,7 +37,14 @@
         padding-inline: 20px;
     }
 
-    h2 {
+    .section__header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .section__heading {
         color: var(--black);
         font-size: 36px;
         line-height: 41.2px;
@@ -45,14 +53,29 @@
         text-align: center;
     }
 
-    h2 span {
+    .section__heading span {
         color: var(--orange);
     }
 
+    .section__description {
+        font-size: 18px;
+        line-height: 24px;
+        color: var(--gray);
+    }
+
     @media (width < 680px) {
-        h2 {
+        .section__header {
+            gap: 5px;
+        }
+
+        .section__heading {
             font-size: 24px;
             line-height: 32px;
+        }
+
+        .section__description {
+            font-size: 14px;
+            line-height: 26px;
         }
     }
 }
@@ -102,6 +125,11 @@
         font-size: 16px;
         line-height: 24px;
         letter-spacing: -0.2px;
+        transition: color 500ms ease-in-out;
+    }
+
+    a:hover {
+        color: var(--orange);
     }
 
     #menu-icon {
@@ -114,7 +142,7 @@
     } */
 
     @media (width < 1000px) {
-        nav {
+        header nav {
             position: absolute;
             background-color: var(--menu-bg);
             right: 0;
@@ -404,6 +432,279 @@
             /* width: fit-content; */
         }
     }
+}
+
+@layer services {
+    .services {
+        padding-block: 70px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .services__grid {
+        display: grid;
+        gap: 18px;
+
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+
+            "task calender calender"
+            "focus notes chat"
+        ;
+    }
+
+    .service {
+        background-color: var(--dark-orange);
+        border-radius: 8px;
+        padding: 20px;
+        padding-top: 50px;
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: start;
+        position: relative;
+    }
+
+    .service img {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .service .number {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--orange);
+        border-radius: 50%;
+    }
+
+    .task {
+        grid-area: task;
+    }
+
+    .calender {
+        grid-area: calender;
+    }
+
+    .focus {
+        grid-area: focus;
+    }
+
+    .notes {
+        grid-area: notes;
+    }
+
+    .chat {
+        grid-area: chat;
+    }
+
+    .service.calender img {
+        width: 150px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .service.calender .service-description {
+        width: 70%;
+    }
+
+    @media (width < 800px) {
+        .services__grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas:
+
+                "task calender"
+                "focus focus"
+                "notes chat"
+            ;
+        }
+
+        .service.calender img {
+            width: 90px;
+            top: 10px;
+            transform: unset;
+            right: 10px;
+        }
+
+        .service.focus img {
+            width: 150px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    @media (width < 680px) {
+        .services__grid {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+
+                "task"
+                "calender"
+                "focus"
+                "notes"
+                "chat"
+            ;
+        }
+
+        .service {
+            width: 100%;
+        }
+
+        .service.calender img {
+            width: 95px;
+        }
+
+        .service.focus img {
+            width: 90px;
+            top: 10px;
+            transform: unset;
+            right: 10px;
+        }
+    }
+
+}
+
+@layer testimonials {
+    .testimonials {
+        max-width: 950px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding-bottom: 70px;
+    }
+
+    .testimonials__container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+
+    .testimonial-card {
+        max-width: 280px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 40px 17px;
+        border: 1px solid var(--orange);
+        border-radius: 12px;
+        color: var(--black);
+        transition: all .5s;
+    }
+
+    .testimonial-card:hover {
+        background-color: var(--orange);
+        color: var(--menu-bg);
+        cursor: pointer;
+    }
+
+    .testimonial-card:hover .testimonial-message,
+    .testimonial-card:hover .testimonial-author-position {
+        color: #ffffff7f;
+    }
+
+    .testimonial-title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .testimonial-message {
+        font-size: 14px;
+        color: var(--gray);
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    .testimonial-author-avatar {
+        width: 48px;
+    }
+
+    .testimonial-author-name {
+        font-weight: bold;
+    }
+
+    .testimonial-author-position {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--gray);
+    }
+
+    @media (width < 680px) {
+        .testimonial-card {
+            max-width: unset;
+        }
+
+        .testimonials {
+            gap: 25px;
+        }
+    }
+
+}
+
+@layer footer {
+    footer {
+        background-color: var(--black-orange);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-block: 40px;
+        align-items: center;
+    }
+
+    footer a {
+        color: var(--white);
+    }
+
+    footer a:hover {
+        color: var(--orange);
+    }
+
+    footer nav ul {
+        /* display: flex; */
+        flex-direction: row;
+    }
+
+    .socials-and-button {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .socials {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .socials img {
+        cursor: pointer;
+    }
+
+    @media(width<680px) {
+        footer nav ul {
+            /* display: flex; */
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .socials-and-button {
+            flex-direction: column;
+        }
+    }
+
 }
 
 /* ANIMATIONS */
