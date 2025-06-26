@@ -136,11 +136,6 @@
         display: none;
     }
 
-    /* nav {
-        display: block !important;
-        opacity: 1 !important;
-    } */
-
     @media (width < 1000px) {
         header nav {
             position: absolute;
